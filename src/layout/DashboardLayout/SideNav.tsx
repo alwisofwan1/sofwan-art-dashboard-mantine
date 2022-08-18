@@ -9,15 +9,16 @@ import {
   Tooltip,
   MediaQuery,
 } from '@mantine/core'
-import {
-  Home,
-  Settings,
-  ArrowLeft,
-  ArrowRight,
-  DeviceAnalytics,
-} from 'tabler-icons-react'
 import { getPath } from 'src/lib/const'
 import { ActiveLink } from 'src/lib/next'
+import {
+  IconArrowLeft,
+  IconArticle,
+  IconHome,
+  IconSettings,
+  IconArrowRight,
+  IconDeviceAnalytics
+} from '@tabler/icons'
 
 const useStyles = createStyles<string, { collapsed?: boolean }>(
   (theme, params, getRef) => {
@@ -101,8 +102,9 @@ const useStyles = createStyles<string, { collapsed?: boolean }>(
 )
 
 const ITEMS = [
-  { href: getPath('INDEX'), label: 'ホーム', Icon: Home },
-  { href: getPath('SETTINGS'), label: '設定', Icon: Settings },
+  { href: getPath('INDEX'), label: 'Beranda', Icon: IconHome },
+  { href: getPath('CONTENT'), label: 'Konten', Icon: IconArticle },
+  { href: getPath('SETTINGS'), label: 'Pengaturan', Icon: IconSettings },
 ]
 
 export const SideNav: FC<{ className?: string }> = ({ className }) => {
@@ -115,7 +117,7 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
         <Group className={classes.header} position="apart">
           <Link href={getPath('INDEX')}>
             <a className={classes.logo}>
-              <DeviceAnalytics />
+              <IconDeviceAnalytics />
               <span className={classes.linkLabel}>Alwi Sofwan</span>
             </a>
           </Link>
@@ -151,11 +153,11 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
         <Navbar.Section className={classes.footer}>
           <UnstyledButton className={classes.link} onClick={handlers.toggle}>
             {collapsed ? (
-              <ArrowRight className={classes.linkIcon} />
+              <IconArrowRight className={classes.linkIcon} />
             ) : (
               <>
-                <ArrowLeft className={classes.linkIcon} />
-                <span>折りたたむ</span>
+                <IconArrowLeft className={classes.linkIcon} />
+                <span>Kembali</span>
               </>
             )}
           </UnstyledButton>
@@ -170,7 +172,7 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
           >
             <Link href={getPath('INDEX')}>
               <a className={classes.link}>
-                <ArrowLeft className={classes.linkIcon} />
+                <IconArrowLeft className={classes.linkIcon} />
                 <span>Kembali</span>
               </a>
             </Link>

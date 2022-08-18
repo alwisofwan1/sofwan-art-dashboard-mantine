@@ -33,7 +33,7 @@ export const PageContainer: FC<PageContainerProps> = ({
         </Breadcrumbs>
       ) : null}
 
-      <Title order={1}>{title}</Title>
+      <Title order={2}>{title}</Title>
 
       <Space h="xl" />
 

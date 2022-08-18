@@ -7,14 +7,18 @@ import { showNotification } from '@mantine/notifications'
 
 const Index: CustomNextPage = () => {
   return (
-    <PageContainer title="ホーム" fluid>
+    <PageContainer title="Beranda" fluid>
       <Stack spacing="xl">
-        <PageContent title="テーブル">
+        <PageContent title="Test">
           <SampleTable />
         </PageContent>
-        <PageContent title="通知">
-          <Button onClick={() => showNotification({ message: '成功しました' })}>
-            通知を表示
+        <PageContent title="Notifikasi">
+          <Button
+            onClick={() =>
+              showNotification({ message: 'Lorem ipsum dolor sit amet.' })
+            }
+          >
+            Notif
           </Button>
         </PageContent>
       </Stack>

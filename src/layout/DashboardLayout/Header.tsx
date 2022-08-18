@@ -26,8 +26,9 @@ import {
   IconSwitchHorizontal,
   IconSun,
   IconMoonStars,
+  IconBell,
+  IconSearch
 } from '@tabler/icons'
-import { Logout, Bell, Search, Settings } from 'tabler-icons-react'
 import { getPath } from 'src/lib/const'
 import { useLocalStorage } from '@mantine/hooks'
 
@@ -85,7 +86,7 @@ const SearchForm: FC = () => {
       data={[]}
       size="lg"
       placeholder="Search"
-      icon={<Search size={18} />}
+      icon={<IconSearch size={18} />}
       styles={{
         root: { flexGrow: 1 },
         input: { border: 0, backgroundColor: 'transparent' },
@@ -102,7 +103,7 @@ const Notification: FC = () => {
     <Indicator inline size={14} offset={4} color="red" withBorder>
       <Link href={getPath('NOTIFICATION')} passHref>
         <ActionIcon component="a" variant="transparent" radius="xl" size={40}>
-          <Bell />
+          <IconBell />
         </ActionIcon>
       </Link>
     </Indicator>
