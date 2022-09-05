@@ -6,10 +6,13 @@ const PATH = {
     SIGN_UP: "/sign-up",
     FORGOT_PASSWORD: "/forgot-password",
     CONTENT: "/app/content",
+    CONTENT_ARTICLE: "/app/content/article",
+    PORTOFOLIO: "/app/portofolio"
   } as const;
   
   export const getPath = (pathKey: keyof typeof PATH, ...args: string[]) => {
     const val = PATH[pathKey];
+    
   
     if (!args) {
       return val;
@@ -25,6 +28,6 @@ const PATH = {
       }
       return dir;
     });
-  
+
     return "/" + newPath.join("/");
   };

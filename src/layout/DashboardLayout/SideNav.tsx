@@ -17,7 +17,8 @@ import {
   IconHome,
   IconSettings,
   IconArrowRight,
-  IconDeviceAnalytics
+  IconDeviceAnalytics,
+  IconBrowser,
 } from '@tabler/icons'
 
 const useStyles = createStyles<string, { collapsed?: boolean }>(
@@ -28,7 +29,7 @@ const useStyles = createStyles<string, { collapsed?: boolean }>(
       navbar: {
         position: 'sticky',
         top: 0,
-        width: params?.collapsed ? 81 : 264,
+        width: params?.collapsed ? 81 : 250,
         transition: params?.collapsed ? 'width 0.1s linear' : 'none',
       },
 
@@ -69,24 +70,34 @@ const useStyles = createStyles<string, { collapsed?: boolean }>(
         color: theme.colors.gray[7],
         padding: `${theme.spacing.xs}px ${theme.spacing.sm}px`,
         borderRadius: theme.radius.sm,
+        marginBottom: 4,
         fontWeight: 500,
 
         '&:hover': {
-          backgroundColor: theme.colors.gray[0],
-          color: theme.black,
+          backgroundColor:
+            theme.colorScheme === 'dark'
+              ? theme.colors.dark[5]
+              : theme.colors.gray[0],
+          color:
+            theme.colorScheme === 'dark'
+              ? theme.colors.dark[0]
+              : theme.colors.gray[7],
 
           [`& .${icon}`]: {
-            color: theme.black,
+            color:
+              theme.colorScheme === 'dark'
+                ? theme.colors.dark[0]
+                : theme.colors.gray[7],
           },
         },
       },
 
       linkActive: {
         '&, &:hover': {
-          backgroundColor: theme.colors[theme.primaryColor][0],
-          color: theme.colors[theme.primaryColor][7],
+          backgroundColor: theme.colorScheme === 'dark' ? '#2C2E33' : '#ebeff2',
+          color: theme.colorScheme === 'dark' ? '#ffffff' : '#16161a',
           [`& .${icon}`]: {
-            color: theme.colors[theme.primaryColor][7],
+            color: theme.colorScheme === 'dark' ? '#ffffff' : '#16161a',
           },
         },
       },
@@ -104,6 +115,7 @@ const useStyles = createStyles<string, { collapsed?: boolean }>(
 const ITEMS = [
   { href: getPath('INDEX'), label: 'Beranda', Icon: IconHome },
   { href: getPath('CONTENT'), label: 'Konten', Icon: IconArticle },
+  { href: getPath('PORTOFOLIO'), label: 'Portofolio', Icon: IconBrowser },
   { href: getPath('SETTINGS'), label: 'Pengaturan', Icon: IconSettings },
 ]
 
@@ -122,12 +134,14 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
             </a>
           </Link>
         </Group>
+
         {ITEMS.map(({ label, href, Icon }) => (
           <Tooltip
             key={label}
             label={label}
             disabled={!collapsed}
             position="right"
+            transitionDuration={0}
             withArrow
             sx={{ width: '100%' }}
           >
@@ -157,7 +171,7 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
             ) : (
               <>
                 <IconArrowLeft className={classes.linkIcon} />
-                <span>Kembali</span>
+                <span>Collapse</span>
               </>
             )}
           </UnstyledButton>

@@ -35,7 +35,7 @@ export const PageContainer: FC<PageContainerProps> = ({
 
       <Title order={2}>{title}</Title>
 
-      <Space h="xl" />
+      <Space h="lg" />
 
       {children}
     </Container>

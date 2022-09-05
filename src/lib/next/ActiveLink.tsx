@@ -1,3 +1,4 @@
+import { includes } from 'lodash'
 import type { LinkProps } from 'next/link'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -9,5 +10,14 @@ type Props = Omit<LinkProps, 'children'> & {
 
 export const ActiveLink: FC<Props> = ({ children, ...linkProps }) => {
   const { pathname } = useRouter()
-  return <Link {...linkProps}>{children(pathname === linkProps.href)}</Link>
+
+  return (
+    <Link {...linkProps}>
+      {children(
+        linkProps.href === '/'
+          ? pathname === linkProps.href
+          : includes(pathname, linkProps.href)
+      )}
+    </Link>
+  )
 }

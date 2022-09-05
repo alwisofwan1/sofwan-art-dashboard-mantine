@@ -10,14 +10,14 @@ import { getPath } from 'src/lib/const'
 
 const mockdata = [
   {
-    title: 'Artikel',
+    title: 'Information',
     icon: IconNews,
     color: 'violet',
     to: getPath('CONTENT_ARTICLE'),
   },
-  { title: 'Audio', icon: IconHeadphones, color: 'indigo', to: '/audio' },
-  { title: 'Video', icon: IconVideo, color: 'blue', to: '/video' },
-  { title: 'Gallery', icon: IconSlideshow, color: 'green', to: '/gallery' },
+  { title: 'Skills', icon: IconHeadphones, color: 'indigo', to: '/audio' },
+  { title: 'Experience', icon: IconVideo, color: 'blue', to: '/video' },
+  { title: 'Projects', icon: IconSlideshow, color: 'green', to: '/gallery' },
 ]
 
 const useStyles = createStyles((theme) => ({

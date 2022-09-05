@@ -12,7 +12,6 @@ import {
   UnstyledButton,
   createStyles,
   Text,
-  useMantineColorScheme,
   ColorScheme,
 } from '@mantine/core'
 import {
@@ -27,7 +26,7 @@ import {
   IconSun,
   IconMoonStars,
   IconBell,
-  IconSearch
+  IconSearch,
 } from '@tabler/icons'
 import { getPath } from 'src/lib/const'
 import { useLocalStorage } from '@mantine/hooks'
@@ -44,9 +43,9 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
     },
 
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
-    },
+    // [theme.fn.smallerThan('xs')]: {
+    //   display: 'none',
+    // },
   },
 
   userActive: {
@@ -60,7 +59,7 @@ export const Header: FC<{ left: ReactNode }> = ({ left }) => {
     <Box
       component="header"
       sx={(theme) => ({
-        padding: `0px ${theme.spacing.md}px`,
+        padding: `2px ${theme.spacing.md}px`,
         borderBottom:
           theme.colorScheme === 'dark'
             ? 'none'
@@ -112,11 +111,11 @@ const Notification: FC = () => {
 
 const UserMenu: FC = () => {
   const [userMenuOpened, setUserMenuOpened] = useState(false)
-  const router = useRouter()
+  // const router = useRouter()
   const { classes, theme, cx } = useStyles()
-  const signOut = () => {
-    router.push(getPath('SIGN_IN'))
-  }
+  // const signOut = () => {
+  //   router.push(getPath('SIGN_IN'))
+  // }
 
   return (
     <Menu
@@ -125,6 +124,7 @@ const UserMenu: FC = () => {
       transition="pop-top-right"
       onClose={() => setUserMenuOpened(false)}
       onOpen={() => setUserMenuOpened(true)}
+      shadow="lg"
     >
       <Menu.Target>
         <UnstyledButton
@@ -133,60 +133,48 @@ const UserMenu: FC = () => {
           <Group spacing={7}>
             <Avatar
               src={
-                'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80'
+                'https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
               }
               alt={'Jhon Doe'}
               radius="xl"
-              size={20}
+              size={30}
             />
-            <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
+            {/* <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
               Alwi Sofwan
-            </Text>
+            </Text> */}
           </Group>
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item
-          icon={
-            <IconHeart size={14} color={theme.colors.red[6]} stroke={1.5} />
-          }
+        <Group
+          my={12}
+          spacing={10}
+          position="center"
+          sx={{
+            display: 'grid',
+            placeItems: 'center',
+          }}
         >
-          Liked posts
-        </Menu.Item>
-        <Menu.Item
-          icon={
-            <IconStar size={14} color={theme.colors.yellow[6]} stroke={1.5} />
-          }
-        >
-          Saved posts
-        </Menu.Item>
-        <Menu.Item
-          icon={
-            <IconMessage size={14} color={theme.colors.blue[6]} stroke={1.5} />
-          }
-        >
-          Your comments
-        </Menu.Item>
-
-        <Menu.Label>Settings</Menu.Label>
+          <Avatar
+            src={
+              'https://images.unsplash.com/photo-1596003906949-67221c37965c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
+            }
+            alt={'Jhon Doe'}
+            radius="xl"
+            size={55}
+          />
+          <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
+            Alwi Sofwan
+          </Text>
+        </Group>
         <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
           Account settings
         </Menu.Item>
         <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
           Change account
         </Menu.Item>
-        <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
+        <Menu.Item color="red" icon={<IconLogout size={14} stroke={1.5} />}>
           Logout
-        </Menu.Item>
-
-        <Menu.Divider />
-
-        <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item icon={<IconPlayerPause size={14} stroke={1.5} />}>
-          Pause subscription
-        </Menu.Item>
-        <Menu.Item color="red" icon={<IconTrash size={14} stroke={1.5} />}>
-          Delete account
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>
@@ -203,7 +191,7 @@ const ThemeSwitch: FC = () => {
     setColorScheme((current: string) => (current === 'dark' ? 'light' : 'dark'))
 
   return (
-    <Group position="center" my="xl">
+    <Group position="center" my="md">
       <ActionIcon
         onClick={() => toggleColorScheme()}
         size="lg"

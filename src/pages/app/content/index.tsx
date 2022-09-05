@@ -1,7 +1,7 @@
 import type { CustomNextPage } from 'next'
 import { DashboardLayout } from 'src/layout'
 
-import { PageContainer } from 'src/components/PageContainer'
+import { PageContainer } from 'src/components/general/PageContainer'
 import { CardContent } from 'src/components/app/content'
 
 const Contents: CustomNextPage = () => {
